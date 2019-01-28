@@ -1,0 +1,23 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Completed</th>
+        <th>hour</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user_activities.each do |activity|
+		@completed = ActivitiesUsers.find_by(activity_id: activity.id, user_id: current_user.id)%>
+        <tr>
+          <td><%=@completed.id%></td>
+          <td><%=activity.name %></td>
+          <td><%=@completed.completed%></td>
+          <td><%=@completed.completed_at%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
